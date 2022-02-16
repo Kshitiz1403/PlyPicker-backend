@@ -72,17 +72,19 @@ exports.list = (req,res) => {
     let order = req.query.order ? req.query.order : "desc"
     let sortBy = req.query.sortBy ? req.query.sortBy : "_id"
     let limit = req.query.limit ? parseInt(req.query.limit) : "30"
-    Product.find()
+    let searchByProdName = req.query.name
+    let searchByGroup = req.query.group? req.query.group : {}
+    Product.find(searchByProdName? {Product_Name: {$regex: searchByProdName, $options: '$i'}}:{})
     .populate("Category")
     .sort([[sortBy , order]])
     .limit(limit)
     .exec((err , data) => {
         if(err){
             res.status(400).json({
-                error:"product not found"
+                error:err
             })
         }
-
+        console.log(data)
         res.json(data)
     })
 }
@@ -142,3 +144,7 @@ exports.listBySearch = (req, res) => {
             });
         });
 };
+
+exports.search = (req, res, next) =>{
+
+}

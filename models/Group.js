@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const {ObjectId} = mongoose.Schema
-const SubCategorySchema = new mongoose.Schema(
+const GroupSchema = new mongoose.Schema(
     {
         Group_name:{
             type:String,

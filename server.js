@@ -15,7 +15,8 @@ const AuthRouter = require("./routes/auth")
 const UserRouter = require("./routes/user")
 const CategoryRouter = require("./routes/category")
 const ProductRouter = require("./routes/product")
-
+const SubCategoryRouter = require("./routes/subCategory")
+const GroupRouter = require("./routes/group")
 
 
 app.get("/", (req, res) => {
@@ -42,7 +43,8 @@ app.use("/api/" , AuthRouter)
 app.use("/api/" , UserRouter)
 app.use("/api/" , CategoryRouter)
 app.use("/api/" , ProductRouter)
-
+app.use("/api/" , SubCategoryRouter)
+app.use("/api/" , GroupRouter )
 app.listen(PORT, () => {
     console.log("server is connected");
 })

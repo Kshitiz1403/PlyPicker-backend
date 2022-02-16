@@ -5,8 +5,8 @@ const { create, productId, remove, update, list, ListRelated, listBySearch } = r
 const { userById } = require("../controllers/user");
 
 router.post("/products/create",
-//  requireSignin, isAuth, isAdmin, 
-create)
+    //  requireSignin, isAuth, isAdmin, 
+    create)
 
 
 
@@ -18,8 +18,8 @@ router.get("/products/:productId", (req, res) => {
 
 router.post("/products/by/search", listBySearch);
 
-router.get("/products"  , list)
-router.get("/products/related/:productId"  , ListRelated)
+router.get("/products", list)
+router.get("/products/related/:productId", ListRelated)
 
 // router.delete("/products/:productId/:userId" ,
 // // requireSignin , isAuth , isAdmin ,

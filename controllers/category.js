@@ -16,7 +16,7 @@ exports.create = (req, res) => {
 exports.getCategories = (req,res) => {
     Category.find().exec((err , data) => {
         if(err){
-            res.status(404).json(err)
+            return res.status(404).json(err)
         }
         res.status(200).json(data)
     })
