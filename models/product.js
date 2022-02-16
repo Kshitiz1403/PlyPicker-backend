@@ -6,7 +6,7 @@ const ProductSchema = new mongoose.Schema(
             type: String,
             trim: true,
             required: true,
-            maxlength: 32
+            // maxlength: 32
         },
         Product_Description: {
             type: String,
@@ -43,7 +43,7 @@ const ProductSchema = new mongoose.Schema(
             default: [],
         },
         Model_no: {
-            type: Number,
+            type: String,
             default: null,
         },
         Rating: {
