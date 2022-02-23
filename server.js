@@ -6,6 +6,7 @@ const dotenv = require("dotenv");
 const morgan = require("morgan");
 const bodyParser = require("body-parser")
 const cookieParser = require("cookie-parser")
+const localtunnel = require("localtunnel");
 
 const cors = require("cors")
 
@@ -16,7 +17,7 @@ const UserRouter = require("./routes/user")
 const CategoryRouter = require("./routes/category")
 const ProductRouter = require("./routes/product")
 const SubCategoryRouter = require("./routes/subCategory")
-const GroupRouter = require("./routes/group")
+const GroupRouter = require("./routes/group");
 
 
 app.get("/", (req, res) => {
@@ -39,6 +40,14 @@ mongoose.connect(process.env.MONGO_URI , {useNewUrlParser: true , useUnifiedTopo
     console.log(error)
 });
 
+const openTunnel = async() =>{
+    const tunnel = await localtunnel({port:PORT, subdomain:"plypicker"})
+    let redirectURL = tunnel.url
+    console.log(redirectURL)
+
+}
+openTunnel()
+
 app.use("/api/" , AuthRouter)
 app.use("/api/" , UserRouter)
 app.use("/api/" , CategoryRouter)
@@ -46,5 +55,5 @@ app.use("/api/" , ProductRouter)
 app.use("/api/" , SubCategoryRouter)
 app.use("/api/" , GroupRouter )
 app.listen(PORT, () => {
-    console.log("server is connected");
+    console.log("server is running at", `http://localhost:${PORT}`);
 })

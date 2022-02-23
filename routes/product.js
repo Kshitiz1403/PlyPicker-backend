@@ -11,9 +11,10 @@ router.post("/products/create",
 
 
 router.get("/products/:productId", (req, res) => {
-    res.json({
-        product: req.product
-    })
+    res.send(req.product)
+    // res.json({
+    //     product: req.product
+    // })
 })
 
 router.post("/products/by/search", listBySearch);
